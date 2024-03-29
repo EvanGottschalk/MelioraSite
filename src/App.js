@@ -26,7 +26,6 @@ const App = () => {
                <BrowserRouter>
                     <Background />
                     <Navbar />
-                    <Main />
                     <Routes>
                          <Route exact path="/" element={<Main />} />
                          <Route exact path="/comics/meliora/volume1/play" element={<ComicPlay />} />
