@@ -26,14 +26,14 @@ const Comics = () => {
     <div className='comics'>
       <div className='comicsLeftContainer'>
         <div className='comicsLeftTop'>
-          <div className='comicsImageContainer'>
+          <div className='comicsImageContainer1'>
             <img data-aos="fade-right" src={meliora_comic_cover_image} alt='' id='comicCoverImage' className='comicsImage comicCoverImage'  />
           </div>
         </div>
       </div>
       <div className='comicsRightContainer'>
         <div className='comicsRightTop'>
-          <div className='comicsImageContainer'>
+          <div className='comicsImageContainer2'>
             <img data-aos="fade-left" src={meliora_comic_description_image} alt='' id='comicDescriptionImage' className='comicsImage comicDescriptionImage' />
           </div>
           <div className='comicsButtonsContainer'>

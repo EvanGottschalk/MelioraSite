@@ -12,6 +12,7 @@ a:active { text-decoration: none; }
   align-items: center;
   max-width: 100%;
   position: fixed;
+  z-index: 10000;
 }
 
 .navbarContainer {
@@ -90,33 +91,35 @@ a:active { text-decoration: none; }
 
   .navbarIcon {
     width: 8%;
-    
   }
 
   .navbarSocialsContainer {
-    margin: 0% 0% 0% 0%;
+    margin: -12% 0% 0% 0%;
     padding: 0% 0% 0% 0%;
   }
 
   .navbarLogoImage {
     width: 100%;
     padding: 0% 0% 0% 15%;
-    margin: 0% 0% 0% 0%;
+    margin: 10% 0% 0% 0%;
   }
 
   .twitterIcon {
-    width: 12%;
-    margin: 0% 0% 0% 0%;
-    padding: 0% 0% 0% 0%;
+    width: 11.5%;
+    margin-top: -2%;
   }
 
-  .linkedinIcon {
+  .discordIcon {
+    width: 9%;
+  }
+
+  /* .linkedinIcon {
     padding-top: 2%;
   }
 
   .instagramIcon {
     padding-top: 2%;
-  }
+  } */
 }
 
 

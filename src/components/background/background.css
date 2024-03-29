@@ -15,6 +15,7 @@
 
 .background1 {
   width: 100%;
+  height: 230vh;  
   object-fit: cover;
   object-position: top;
   align-items: center;
@@ -26,12 +27,51 @@
   z-index: -1;
   transform: translateZ(-1px);
   overflow: hidden;
-  height: 100vw;
 }
 
+.background2 {
+  width: 0%;
+  object-fit: cover;
+  object-position: top;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: none;
+  margin: 0px 0px 0px 0px;
+  position: absolute;
+  z-index: -1;
+  transform: translateZ(-1px);
+  overflow: hidden;
+  width: 0%;
+}
 
-@media only screen and (max-width: 1400px) {
+.background3 {
+  width: 0%;
+  object-fit: cover;
+  object-position: top;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: none;
+  margin: 0px 0px 0px 0px;
+  position: absolute;
+  z-index: -1;
+  transform: translateZ(-1px);
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
   .background1 {
+    height: 160vh;
+  }
+
+  .background2 {
     width: 100%;
+    display: block;
+  }
+
+  .background3 {
+    width: 100%;
+    display: block;
   }
 }
