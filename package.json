@@ -1,6 +1,6 @@
 {
-  "name": "evanonearth",
-  "homepage": "https://evanonearth.xyz",
+  "name": "meliora",
+  "homepage": "https://github.com/EvanGottschalk/MelioraSite",
   "version": "4.20.69",
   "dependencies": {
     "@chakra-ui/react": "^2.6.1",
