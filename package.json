@@ -1,6 +1,6 @@
 {
   "name": "meliora",
-  "homepage": "https://github.com/EvanGottschalk/MelioraSite",
+  "homepage": "https://evangottschalk.github.io/MelioraSite/",
   "version": "4.20.69",
   "dependencies": {
     "@chakra-ui/react": "^2.6.1",
