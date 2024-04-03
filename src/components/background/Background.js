@@ -22,7 +22,7 @@ const Background = () => {
     parallax.style.transform = 'translateY(' + scrollPosition * 0.7 + 'px)';
   });
   return (
-    <div classname='background'>
+    <div className='background'>
       <div className='background1Container'>
         <img src={background1} alt='' className='background1' />
       </div>
