@@ -1277,7 +1277,7 @@ let contract_dict = {'default': {},
                                                  'setApprovalForAll': {'number_of_inputs': 2}}},
                      'MelioraComicV1': {'Address': {'mainnet': '',
                                                     'goerli': '',
-                                                    'sepolia': '0x0C30C7631aA56c1509757e887935627bB42eF86a', 
+                                                    'sepolia': '0xb4cA8f64B5b891ca72398FB6c143266a9B582dba', 
                                                     'optimism': '',
                                                     'optimism_sepolia': '0xDd87063B0fb8F7b13AFA7886F51106013004744f'},
                                           'ABI': `[{
