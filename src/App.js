@@ -27,7 +27,11 @@ const App = () => {
                                                   user_metadata, setMetadata_Context,
                                                   user_avatar_URI, setAvatarURI_Context,
                                                   contract_name, setContractName_Context }}>
-               <BrowserRouter>
+               <Background />
+                    <Navbar />
+                    <Main />
+                    <Footer />
+               {/* <BrowserRouter>
                     <Background />
                     <Navbar />
                     <Routes>
@@ -36,7 +40,7 @@ const App = () => {
                          <Route exact path="/comics/meliora/volume1/mint" element={<ComicMint />} />
                     </Routes>
                     <Footer />
-               </BrowserRouter>
+               </BrowserRouter> */}
           </SmartContractContext.Provider>
      )
 }
