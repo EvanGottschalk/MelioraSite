@@ -3179,21 +3179,28 @@ export async function runContractFunction(contract_name_input, function_name, fu
   
 
   // user_token_ID = parseInt(transaction_receipt.logs[0].topics[3], 10);
+
+  if (function_name === 'mint' || function_name === '__mintFree') {
+    console.log("Unparsed User Token ID: ", transaction_receipt.logs[0].topics[3]);
+
+    // const events = contract.interface.parseLog(transaction_receipt.logs[0]);
+    // const user_token_ID = events.args.token_ID;
   
-  console.log("Unparsed User Token ID: ", transaction_receipt.logs[0].topics[3]);
-
-  // const events = contract.interface.parseLog(transaction_receipt.logs[0]);
-  // const user_token_ID = events.args.token_ID;
-
-  user_token_ID = parseInt( transaction_receipt.logs[0].topics[3], 16);
-
-  console.log("Parsed Token ID:", user_token_ID)
-
+    user_token_ID = parseInt( transaction_receipt.logs[0].topics[3], 16);
+  
+    console.log("Parsed Token ID:", user_token_ID)
+    console.log("Transaction Info: ", transaction_info);
+    return user_token_ID; 
+  } else {
+    console.log("Transaction Info: ", transaction_info);
+    return transaction_info;
+  }
+  
   // console.log("User Token ID: ", user_token_ID);
   // console.log(parseInt(transaction_receipt.logs[0].topics[3], 10));
 
-  console.log("Transaction Info: ", transaction_info);
-  return user_token_ID;  
+  
+   
 };
 
 

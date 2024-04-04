@@ -28,9 +28,9 @@ const App = () => {
                                                   user_avatar_URI, setAvatarURI_Context,
                                                   contract_name, setContractName_Context }}>
                <Background />
-                    <Navbar />
-                    <Main />
-                    <Footer />
+               <Navbar />
+               <ComicMint />
+               {/* <Footer /> */}
                {/* <BrowserRouter>
                     <Background />
                     <Navbar />

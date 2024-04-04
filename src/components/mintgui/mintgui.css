@@ -2,74 +2,143 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: black;
   padding: 10% 0% 10% 0%;
   margin: 0% 0% 0% 0%;
+  position: absolute;
   overflow: hidden;
 }
 
 .mintguiLeftContainer {
   flex: 50%;
   display: flex;
-  justify-content: flex-end;
+  align-items: flex-end;
   padding: 0% 0% 0% 10%;
 }
 
-.mintguiRightContainer {
-  flex: 50%;
+.comicCoverImage {
+  width: 55%;
+  margin-left: 15%;
+}
+
+.comicDescriptionImage {
+  width: 70%;
+}
+
+
+
+
+.mintguiRightInnerContainer {
+  padding: 5% 0% 5% 0%;
+  border-radius: 35px 35px 0px 0px;
+  margin-right: 10%;
+  background-color: #000000;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  flex-direction: column;
 }
 
-.mintguiImage {
-  border-radius: 50px;
-  width: 80%;
-  align-items: left;
-  justify-content: left;
-  float: left;
+.connectButton {
+  font-size: 20px;
+  margin-bottom: 5%;
 }
 
+.mintguiConnectContainer {
+  background-color: #000000;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  border-radius: 0px 0px 35px 35px;
+  padding-bottom: 5%;
+}
 
-.mintguiTextContainer {
+.mintguiInfoContainer {
+  background-color: #000000;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  border-radius: 0px 0px 0px 0px;
+}
+
+.mintguiButtonsContainer1 {
+  background-color: #000000;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  border-radius: 0px 0px 0px 0px;
+}
+
+.mintguiButtonsContainer2 {
+  background-color: #000000;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  border-radius: 0px 0px 35px 35px;
+  padding-bottom: 5%;
+}
+
+.mintguiInfo {
+  cursor: pointer;
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #ffffff;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 8px;
+  width: 35%;
+  margin-left: 2%;
+  padding: .5% 1% 1% 1%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mintguiButton {
+  cursor: pointer;
+  background-color: #77FF9A;
+  border-radius: 8px;
+  width: 35%;
+  margin-left: 2%;
+  padding: .5% 1% 1% 1%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mintguiInputField {
+  border-radius: 8px;
+  width: 35%;
+  margin-left: 2%;
+  padding: .5% 1% 1% 1%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.amountEntry {
+  font-size: 17px;
+  line-height: 28px;
+}
+
+.mintButtonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2% 0% 0% 0%;
+}
+
+.mintguiOpenSeaLink {
+  display: none;
+  z-index: 999;
+  font-size: 25px;
+  background-color: #9dff8a;
   width: 100%;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  display: flex;
-  align-items: left;
-  justify-content: center;
-  flex-direction: column;
 }
 
-.mintguiText {
-  text-align: left;
-  color: white;
-  font-size: 16px;
-}
 
-.mintguiTitle {
-  font-size: 23px;
-  text-decoration: underline;
-}
-
-.mintguiLink {
-  width: 45%;
-}
-
-.mintguiLink:hover {
-  -webkit-transform: scale(1.10);
-  -moz-transform: scale(1.10);
-  -o-transform: scale(1.10);
-  transform: scale(1.10);
-}
-
-.mintguiLink:active {
-  -webkit-transform: scale(1.15);
-  -moz-transform: scale(1.15);
-  -o-transform: scale(1.15);
-  transform: scale(1.15);
-}
 
 @media only screen and (max-width: 560px) {
   .mintguiBoxIMG {
@@ -90,6 +159,9 @@
     justify-content: center;
   }
 
+  .mintguiImageContainer2 {
+    margin-bottom: -8vh;
+  }
 
   .mintguiLeftContainer {
     padding: 0% 5% 0% 5%;
@@ -117,6 +189,30 @@
 
   .mintguiLink {
     width: 100%;
+  }
+
+  .mintguiButtonsContainer {
+    /* margin-top: -10%;
+    margin-left: 5%; */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mintguiButton {
+    cursor: pointer;
+  }
+  
+  /* .mintguiButton {
+    width: 30%;
+  } */
+  
+  /* .mintguiMintButton {
+    margin-right: 5%;
+  } */
+  
+  .signUpButton {
+    width: 37.5vw;
+    margin-left: 25vw;
   }
 
 }
