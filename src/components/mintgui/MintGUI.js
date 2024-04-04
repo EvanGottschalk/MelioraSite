@@ -50,29 +50,34 @@ const MintGUI = () => {
 
   async function mouseClick(event) {
     await setUserWalletInfo();
+    const mint_button = document.getElementById(event.target.id);
     if (event.target.id === 'mintButton1') {
-      await executeMint(1);
+      await executeMint(1, mint_button);
     } else if (event.target.id === 'mintButton5') {
-      await executeMint(5);
+      await executeMint(5, mint_button);
     } else if (event.target.id === 'mintButtonCustom') {
       if (Number(document.getElementById("mintButtonCustom").value) >= 0) {
-        await executeMint(Number(document.getElementById("mintButtonCustom").value));
+        await executeMint(Number(document.getElementById("mintButtonCustom").value), mint_button);
       }
     } else if(event.target.id === 'readButton') {
       window.open('https://bafybeictavxgorrl67f2dsvfafu4zfdhts52bg7fystxeiz2bcnxkggb6y.ipfs.nftstorage.link/#p=1', '_blank');
+    } else if(event.target.id === 'mintguiOpenSeaLink') {
+      window.open(opensea_link, '_blank');
     };
     await updateTotalMinted();
   };
 
-  async function executeMint(amount) {
-    const opensea_link_button = document.getElementById("mintguiOpenSeaLink");
-    opensea_link_button.style.display = 'block';
-    const token_ID = await runContractFunction(contract_name, 'mint', [], opensea_link_button);
+  async function executeMint(amount, mint_button) {
+    // const opensea_link_button = document.getElementById("mintguiOpenSeaLink");
+    // mint_button.style.display = 'block';
+    const token_ID = await runContractFunction(contract_name, 'mint', [], mint_button);
     console.log('token_ID', token_ID);
     opensea_link = await getOpenSeaLink(contract_name, token_ID);
-    opensea_link_button.textContent = "View on OpenSea";
-    opensea_link_button.href = opensea_link;
-    opensea_link_button.target = '_blank';
+    // mint_button.style.display = 'inline-block';
+    document.getElementById('mintContainer3').style.display = 'inline-block';
+    mint_button.textContent = "Mint Success!";
+    // mint_button.href = opensea_link;
+    // mint_button.target = '_blank';
   };
 
   
@@ -114,7 +119,7 @@ const MintGUI = () => {
         </div>
         <div id='connectContainer' className='mintguiConnectContainer buttonGroupContainer' style={(user_address) ? {display: "none"} : {display: "inline-block"}}>
           <div className='mintButtonContainer buttonContainer'>
-            <span data-aos="fade-left" onClick={mouseClick} onMouseOver={mouseover} onMouseLeave={mouseleave} id='connectButton' className='mintguiButton connectButton'>
+            <span onClick={mouseClick} onMouseOver={mouseover} onMouseLeave={mouseleave} id='connectButton' className='mintguiButton connectButton'>
               Connect Wallet
             </span>
           </div>
@@ -158,15 +163,32 @@ const MintGUI = () => {
             <span data-aos="fade-left" onClick={mouseClick} onMouseOver={mouseover} onMouseLeave={mouseleave} id='mintButtonCustom' className='mintguiButton mintButton'>
               Mint Custom Amount
             </span>
-            <span data-aos="fade-left" id='readButton' className='mintguiInputField readButton'>
+            <span data-aos="fade-left" id='amountButton' className='mintguiInputField readButton'>
               <input className='amountEntry' id='amountEntry' placeholder="# of Copies" type="number"/>
             </span>
           </div>
         </div>
+        <div id='mintContainer3' className='mintedContainer mintguiButtonsContainer1 buttonGroupContainer' style={(user_address) ? {display: "inline-block"} : {display: "none"}}>
+          <div className='mintButtonContainer buttonContainer'>
+            <span data-aos="fade-left" onClick={mouseClick} onMouseOver={mouseover} onMouseLeave={mouseleave} id='readButton' className='mintguiButton mintButton'>
+              Read Comic
+            </span>
+            <span data-aos="fade-left" onClick={mouseClick} onMouseOver={mouseover} onMouseLeave={mouseleave} id='mintguiOpenSeaLink' className='mintguiButton readButton'>
+              View on OpenSea
+            </span>
+          </div>
+          <div className='mintButtonContainer buttonContainer'>
+            
+          </div>
+          {/* <img data-aos="fade-left" src={mint_button_image} alt='' onClick={mouseClick} onMouseOver={mouseover} onMouseLeave={mouseleave} id='mintguiMintButton' className='mintguiButton mintguiMintButton' />
+          <a href={window.location.href + 'mintgui/meliora/volume1/play'}>
+            <img data-aos="fade-left" src={play_read_button_image} alt='' onMouseOver={mouseover} onMouseLeave={mouseleave} id='mintguiDescriptionButton' className='mintguiButton comicDescriptionButton' />
+          </a> */}
+        </div>
       </div>
-      <div className='mintguiOpenSeaLinkContainer'>
+      {/* <div className='mintguiOpenSeaLinkContainer'>
         <a id='mintguiOpenSeaLink' className='mintguiOpenSeaLink' href={opensea_link} target='_blank'>Executing</a>
-      </div>
+      </div> */}
     </div>
   )
 }
