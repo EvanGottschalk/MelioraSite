@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/MelioraSite/static/css/main.097415b0.chunk.css",
-    "main.js": "/MelioraSite/static/js/main.8eebb09a.chunk.js",
-    "main.js.map": "/MelioraSite/static/js/main.8eebb09a.chunk.js.map",
+    "main.css": "/MelioraSite/static/css/main.6c22987f.chunk.css",
+    "main.js": "/MelioraSite/static/js/main.213a1dc2.chunk.js",
+    "main.js.map": "/MelioraSite/static/js/main.213a1dc2.chunk.js.map",
     "runtime-main.js": "/MelioraSite/static/js/runtime-main.6d052b13.js",
     "runtime-main.js.map": "/MelioraSite/static/js/runtime-main.6d052b13.js.map",
     "static/css/2.7fc9bc2b.chunk.css": "/MelioraSite/static/css/2.7fc9bc2b.chunk.css",
-    "static/js/2.521dcc01.chunk.js": "/MelioraSite/static/js/2.521dcc01.chunk.js",
-    "static/js/2.521dcc01.chunk.js.map": "/MelioraSite/static/js/2.521dcc01.chunk.js.map",
+    "static/js/2.025ceb8d.chunk.js": "/MelioraSite/static/js/2.025ceb8d.chunk.js",
+    "static/js/2.025ceb8d.chunk.js.map": "/MelioraSite/static/js/2.025ceb8d.chunk.js.map",
     "index.html": "/MelioraSite/index.html",
     "static/css/2.7fc9bc2b.chunk.css.map": "/MelioraSite/static/css/2.7fc9bc2b.chunk.css.map",
-    "static/css/main.097415b0.chunk.css.map": "/MelioraSite/static/css/main.097415b0.chunk.css.map",
-    "static/js/2.521dcc01.chunk.js.LICENSE.txt": "/MelioraSite/static/js/2.521dcc01.chunk.js.LICENSE.txt",
+    "static/css/main.6c22987f.chunk.css.map": "/MelioraSite/static/css/main.6c22987f.chunk.css.map",
+    "static/js/2.025ceb8d.chunk.js.LICENSE.txt": "/MelioraSite/static/js/2.025ceb8d.chunk.js.LICENSE.txt",
     "static/media/EXP_plus_10.cd8d1cc1.gif": "/MelioraSite/static/media/EXP_plus_10.cd8d1cc1.gif",
     "static/media/EXP_plus_5.7ef89b0c.gif": "/MelioraSite/static/media/EXP_plus_5.7ef89b0c.gif",
     "static/media/index.css": "/MelioraSite/static/media/Sequel100Black-65.e4003b0d.ttf",
     "static/media/TAP_plus_3.bb9c9a3b.gif": "/MelioraSite/static/media/TAP_plus_3.bb9c9a3b.gif",
-    "static/media/background1.e41ba16e.png": "/MelioraSite/static/media/background1.e41ba16e.png",
+    "static/media/background2.5631c1a5.png": "/MelioraSite/static/media/background2.5631c1a5.png",
     "static/media/banner-home.4e8ed300.png": "/MelioraSite/static/media/banner-home.4e8ed300.png",
     "static/media/click_to_open_button.956bad6b.png": "/MelioraSite/static/media/click_to_open_button.956bad6b.png",
     "static/media/discord.667df059.png": "/MelioraSite/static/media/discord.667df059.png",
@@ -25,7 +25,7 @@
     "static/media/linkedin.76350122.png": "/MelioraSite/static/media/linkedin.76350122.png",
     "static/media/logo.bdf03968.png": "/MelioraSite/static/media/logo.bdf03968.png",
     "static/media/meliora_comic_cover.93408526.png": "/MelioraSite/static/media/meliora_comic_cover.93408526.png",
-    "static/media/meliora_comic_description.0b8fa835.png": "/MelioraSite/static/media/meliora_comic_description.0b8fa835.png",
+    "static/media/meliora_comic_description.ea3bf384.png": "/MelioraSite/static/media/meliora_comic_description.ea3bf384.png",
     "static/media/mint_comic_button.21807524.png": "/MelioraSite/static/media/mint_comic_button.21807524.png",
     "static/media/partners-image.e21e9a12.png": "/MelioraSite/static/media/partners-image.e21e9a12.png",
     "static/media/play_read_button.2ee5edc6.png": "/MelioraSite/static/media/play_read_button.2ee5edc6.png",
@@ -36,8 +36,8 @@
   "entrypoints": [
     "static/js/runtime-main.6d052b13.js",
     "static/css/2.7fc9bc2b.chunk.css",
-    "static/js/2.521dcc01.chunk.js",
-    "static/css/main.097415b0.chunk.css",
-    "static/js/main.8eebb09a.chunk.js"
+    "static/js/2.025ceb8d.chunk.js",
+    "static/css/main.6c22987f.chunk.css",
+    "static/js/main.213a1dc2.chunk.js"
   ]
 }
