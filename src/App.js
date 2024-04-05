@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from './components/navbar/Navbar';
+import Banner from './components/banner/Banner';
 import Background from './components/background/Background';
 import Main from './pages/main/Main';
 import Footer from './components/footer/Footer';
@@ -29,6 +30,7 @@ const App = () => {
                                                   contract_name, setContractName_Context }}>
                <Background />
                <Navbar />
+               <Banner />
                <ComicMint />
                {/* <Footer /> */}
                {/* <BrowserRouter>

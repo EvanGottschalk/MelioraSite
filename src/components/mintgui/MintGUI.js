@@ -8,12 +8,13 @@ import { connectWallet, runContractFunction, getFunctionParams } from '../../scr
 import {mintNFT, getOpenSeaLink, getJSONfromIPFS, setUserTokenID, setUserMetadata, setUserAvatarURI} from '../../scripts/SmartContractOperator';
 
 
-import meliora_comic_cover_image from '../../image/meliora_comic_cover.png'
-import meliora_comic_description_image from '../../image/meliora_comic_description.png'
-import mint_button_image from '../../image/mint_comic_button.png'
-import play_read_button_image from '../../image/play_read_button.png'
-import sign_up_image from '../../image/sign_up_button.png'
-import blank_button_image from '../../image/blank_button.png'
+import meliora_comic_cover_image from '../../image/meliora_comic_cover.png';
+import meliora_comic_description_image from '../../image/meliora_comic_description.png';
+// import mint_button_image from '../../image/mint_comic_button.png'
+// import play_read_button_image from '../../image/play_read_button.png'
+// import sign_up_image from '../../image/sign_up_button.png'
+// import blank_button_image from '../../image/blank_button.png'
+import collect_forever_onchain_image from '../../image/collect-forever-onchain.png';
 
 import './mintgui.css'
 
@@ -22,7 +23,7 @@ var opensea_link = '';
 const MintGUI = () => {
 
   useEffect(() => {
-    Aos.init({ duration: 2000 });
+    Aos.init({ duration: 1500 });
   }, []);
 
   let { user_address, setAddress_Context } = useContext(SmartContractContext);
@@ -38,17 +39,26 @@ const MintGUI = () => {
   user_address = false;
   var total_minted = 0; //runContractFunction(contract_name, 'getTotalSupply');
 
-  function mouseover(event) {
+  function onMouseOver(event) {
     let element = document.getElementById(event.target.id);
     element.style.transform = 'scale(1.10)';
   };
   
-  function mouseleave(event) {
+  function onMouseLeave(event) {
     let element = document.getElementById(event.target.id);
     element.style.transform = 'scale(1.0)';
   };
 
-  async function mouseClick(event) {
+  function handleFieldChange(event) {
+    const current_amount_entry = event.target.value;
+    if (current_amount_entry > 0) {
+      document.getElementById('customAmountText').textContent = `Total Price: 0.${current_amount_entry} ETH`;
+    } else {
+      document.getElementById('customAmountText').textContent = `Total Price: 0.0 ETH`;
+    }
+  };
+
+  async function onMouseClick(event) {
     await setUserWalletInfo();
     const mint_button = document.getElementById(event.target.id);
     if (event.target.id === 'mintButton1') {
@@ -106,6 +116,9 @@ const MintGUI = () => {
 
   return (
     <div className='mintgui'>
+      {/* <div className='mintguiBanner'>
+        <img data-aos="fade-left" src={collect_forever_onchain_image} alt='' id='collectForeverBanner' className='mintguiBannerImage'  />
+      </div> */}
       <div className='mintguiLeftContainer'>
         <div className='mintguiLeftTop'>
           <div className='mintguiImageContainer1'>
@@ -119,70 +132,73 @@ const MintGUI = () => {
         </div>
         <div id='connectContainer' className='mintguiConnectContainer buttonGroupContainer' style={(user_address) ? {display: "none"} : {display: "inline-block"}}>
           <div className='mintButtonContainer buttonContainer'>
-            <span onClick={mouseClick} onMouseOver={mouseover} onMouseLeave={mouseleave} id='connectButton' className='mintguiButton connectButton'>
+            <span data-aos="fade-left" onClick={onMouseClick} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} id='connectButton' className='mintguiButton connectButton'>
               Connect Wallet
             </span>
           </div>
         </div>
         <div id='infoContainer' className='mintguiInfoContainer buttonGroupContainer' style={(user_address) ? {display: "inline-block"} : {display: "none"}}>
           <div className='mintButtonContainer buttonContainer'>
-            <span data-aos="fade-left" onMouseOver={mouseover} onMouseLeave={mouseleave} id='mintPrice' className='mintguiInfo mintButton'>
+            <span data-aos="fade-left" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} id='mintPrice' className='mintguiInfo mintButton'>
               Mint Price: .01 ETH
             </span>
-            <span data-aos="fade-left" onMouseOver={mouseover} onMouseLeave={mouseleave} id='totalMinted' className='mintguiInfo readButton'>
+            <span data-aos="fade-left" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} id='totalMinted' className='mintguiInfo readButton'>
               Total Minted:
             </span>
           </div>
           <div className='mintButtonContainer buttonContainer'>
             
           </div>
-          {/* <img data-aos="fade-left" src={mint_button_image} alt='' onClick={mouseClick} onMouseOver={mouseover} onMouseLeave={mouseleave} id='mintguiMintButton' className='mintguiButton mintguiMintButton' />
+          {/* <img data-aos="fade-left" src={mint_button_image} alt='' onClick={onMouseClick} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} id='mintguiMintButton' className='mintguiButton mintguiMintButton' />
           <a href={window.location.href + 'mintgui/meliora/volume1/play'}>
-            <img data-aos="fade-left" src={play_read_button_image} alt='' onMouseOver={mouseover} onMouseLeave={mouseleave} id='mintguiDescriptionButton' className='mintguiButton comicDescriptionButton' />
+            <img data-aos="fade-left" src={play_read_button_image} alt='' onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} id='mintguiDescriptionButton' className='mintguiButton comicDescriptionButton' />
           </a> */}
         </div>
         <div id='mintContainer1' className='mintguiButtonsContainer1 buttonGroupContainer' style={(user_address) ? {display: "inline-block"} : {display: "none"}}>
           <div className='mintButtonContainer buttonContainer'>
-            <span data-aos="fade-left" onClick={mouseClick} onMouseOver={mouseover} onMouseLeave={mouseleave} id='mintButton1' className='mintguiButton mintButton'>
+            <span data-aos="fade-left" onClick={onMouseClick} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} id='mintButton1' className='mintguiButton mintButton'>
               Mint 1 for .01 ETH
             </span>
-            <span data-aos="fade-left" onClick={mouseClick} onMouseOver={mouseover} onMouseLeave={mouseleave} id='mintButton5' className='mintguiButton readButton'>
+            <span data-aos="fade-left" onClick={onMouseClick} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} id='mintButton5' className='mintguiButton readButton'>
               Mint 5 for .05 ETH
             </span>
           </div>
           <div className='mintButtonContainer buttonContainer'>
             
           </div>
-          {/* <img data-aos="fade-left" src={mint_button_image} alt='' onClick={mouseClick} onMouseOver={mouseover} onMouseLeave={mouseleave} id='mintguiMintButton' className='mintguiButton mintguiMintButton' />
+          {/* <img data-aos="fade-left" src={mint_button_image} alt='' onClick={onMouseClick} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} id='mintguiMintButton' className='mintguiButton mintguiMintButton' />
           <a href={window.location.href + 'mintgui/meliora/volume1/play'}>
-            <img data-aos="fade-left" src={play_read_button_image} alt='' onMouseOver={mouseover} onMouseLeave={mouseleave} id='mintguiDescriptionButton' className='mintguiButton comicDescriptionButton' />
+            <img data-aos="fade-left" src={play_read_button_image} alt='' onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} id='mintguiDescriptionButton' className='mintguiButton comicDescriptionButton' />
           </a> */}
         </div>
         <div id='mintContainer2' className='mintguiButtonsContainer2 buttonGroupContainer' style={(user_address) ? {display: "inline-block"} : {display: "none"}}>
           <div className='mintButtonContainer buttonContainer'>
-            <span data-aos="fade-left" onClick={mouseClick} onMouseOver={mouseover} onMouseLeave={mouseleave} id='mintButtonCustom' className='mintguiButton mintButton'>
+            <span data-aos="fade-left" onClick={onMouseClick} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} id='mintButtonCustom' className='mintguiButton mintButton'>
               Mint Custom Amount
             </span>
             <span data-aos="fade-left" id='amountButton' className='mintguiInputField readButton'>
-              <input className='amountEntry' id='amountEntry' placeholder="# of Copies" type="number"/>
+              <input className='amountEntry' id='amountEntry' placeholder="# of Copies" type="number" onChange={handleFieldChange} />
             </span>
           </div>
+          <span data-aos="fade-left" id='customAmountText' className='customAmountText'>
+            Total Price: 0.0 ETH
+          </span>
         </div>
         <div id='mintContainer3' className='mintedContainer mintguiButtonsContainer1 buttonGroupContainer' style={(user_address) ? {display: "inline-block"} : {display: "none"}}>
           <div className='mintButtonContainer buttonContainer'>
-            <span data-aos="fade-left" onClick={mouseClick} onMouseOver={mouseover} onMouseLeave={mouseleave} id='readButton' className='mintguiButton mintButton'>
+            <span data-aos="fade-left" onClick={onMouseClick} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} id='readButton' className='mintguiButton mintButton'>
               Read Comic
             </span>
-            <span data-aos="fade-left" onClick={mouseClick} onMouseOver={mouseover} onMouseLeave={mouseleave} id='mintguiOpenSeaLink' className='mintguiButton readButton'>
+            <span data-aos="fade-left" onClick={onMouseClick} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} id='mintguiOpenSeaLink' className='mintguiButton readButton'>
               View on OpenSea
             </span>
           </div>
           <div className='mintButtonContainer buttonContainer'>
             
           </div>
-          {/* <img data-aos="fade-left" src={mint_button_image} alt='' onClick={mouseClick} onMouseOver={mouseover} onMouseLeave={mouseleave} id='mintguiMintButton' className='mintguiButton mintguiMintButton' />
+          {/* <img data-aos="fade-left" src={mint_button_image} alt='' onClick={onMouseClick} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} id='mintguiMintButton' className='mintguiButton mintguiMintButton' />
           <a href={window.location.href + 'mintgui/meliora/volume1/play'}>
-            <img data-aos="fade-left" src={play_read_button_image} alt='' onMouseOver={mouseover} onMouseLeave={mouseleave} id='mintguiDescriptionButton' className='mintguiButton comicDescriptionButton' />
+            <img data-aos="fade-left" src={play_read_button_image} alt='' onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} id='mintguiDescriptionButton' className='mintguiButton comicDescriptionButton' />
           </a> */}
         </div>
       </div>

@@ -1277,9 +1277,10 @@ let contract_dict = {'default': {},
                                                  'setApprovalForAll': {'number_of_inputs': 2}}},
                      'MelioraComicV1': {'Address': {'mainnet': '',
                                                     'goerli': '',
-                                                    'sepolia': '0xb4cA8f64B5b891ca72398FB6c143266a9B582dba', 
+                                                    'sepolia': '0x5903192c2ecB01B25ff67de229e511689341ecC4', 
                                                     'optimism': '',
                                                     'optimism_sepolia': '0xDd87063B0fb8F7b13AFA7886F51106013004744f'},
+                                        'ABI_location': '../../../artifacts/contracts/MelioraComicV1.sol',
                                           'ABI': `[{
                                             "inputs": [],
                                             "stateMutability": "nonpayable",
@@ -2152,6 +2153,25 @@ let contract_dict = {'default': {},
                                           {
                                             "inputs": [
                                               {
+                                                "internalType": "uint256",
+                                                "name": "amount",
+                                                "type": "uint256"
+                                              }
+                                            ],
+                                            "name": "mintBatch",
+                                            "outputs": [
+                                              {
+                                                "internalType": "uint256",
+                                                "name": "token_ID",
+                                                "type": "uint256"
+                                              }
+                                            ],
+                                            "stateMutability": "payable",
+                                            "type": "function"
+                                          },
+                                          {
+                                            "inputs": [
+                                              {
                                                 "internalType": "address",
                                                 "name": "",
                                                 "type": "address"
@@ -2486,6 +2506,7 @@ let contract_dict = {'default': {},
                                             "type": "function"
                                           }]`,
                                           'Functions': {'mint': [],
+                                                        'mintBatch': ['amount'],
                                                         '__mintFree': ['token_URI'],
                                                         'contractURI': [],
                                                         '__setContractURI': ['new_contract_URI'],
@@ -2526,7 +2547,7 @@ let contract_dict = {'default': {},
                                'ABI': `[]`,
                                'Functions': {'mint': {'number_of_inputs': 1}}}};
 
-
+var contract_name = default_contract_name;
 contract_dict['default'] = contract_dict[default_contract_name];
 
 
@@ -2671,7 +2692,7 @@ async function onLoad () {
   if (run_on_load) {
     run_on_load = false;
     await connectWallet();
-    contract_dict['Signatures']['Functions'] = await parseABI(contract_dict['Signatures']['ABI']);
+    contract_dict['Signatures']['Functions'] = await parseABIfunctions(contract_dict['Signatures']['ABI']);
     console.log("Functions:", contract_dict['Signatures']['Functions']);
     
   }
@@ -2984,8 +3005,8 @@ export async function connectWallet(network_name_input) {
 //# Smart Contract Functions
 
 
-async function parseABI(ABI) {
-  console.log('\nSmartContractOperator >>> RUNNING parseABI()');
+async function parseABIfunctions(ABI) {
+  console.log('\nSmartContractOperator >>> RUNNING parseABIfunctions()');
 
   const functions = {};
 
@@ -2997,7 +3018,7 @@ async function parseABI(ABI) {
       }
   }
 
-  return functions;
+  return(functions);
 };
 
 
@@ -3024,10 +3045,25 @@ async function extractABI(JSON_file_path) {
 };
 
 
+async function getABI(contract_name_input) {
+  // const JSON_file_path = contract_dict[contract_name_input]['ABI_location'];
+  const JSON_file_path = '../../../artifacts/contracts/' + contract_name_input + '.sol';
+  const ABI = await extractABI(JSON_file_path);
+  return(ABI); 
+};
+
+
 export async function getFunctionParams(contract_name_input, function_name_input) {
   const function_params = contract_dict[contract_name_input]['Functions'][function_name_input];
   return(function_params);
 };
+
+
+export async function getContractFunctions(contract_name_input) {
+  const ABI = getABI(contract_name_input);
+  const functions = parseABIfunctions(ABI);
+  return(functions);
+}
 
 
 //Should take contract address
@@ -3067,12 +3103,17 @@ export async function runContractFunction(contract_name_input, function_name, fu
   
   if (Array.isArray(function_input_list)) {
     console.log('SmartContractOperator: Using the NEW way!');
-    if (function_name === 'mint') {
+    if (function_name === 'mint' || function_name === 'mintBatch') {
       const mint_price_raw = await contract.getMyMintPrice();
       console.log('Mint Price RAW:', mint_price_raw);
       const mint_price_fixed = mint_price_raw / 1000000000000000000;
       console.log('Mint Price FIXED:', mint_price_fixed);
-      transaction_info = await contract[function_name](...function_params, { value: ethers.utils.parseUnits(mint_price_fixed.toString(), "ether") });
+      var total_mint_price = mint_price_fixed;
+      if (function_name === 'mintBatch') {
+        total_mint_price = mint_price_fixed * function_params[0]; // multiply by the 'amount' input
+        console.log('TOTAL Mint Price:', total_mint_price);
+      };
+      transaction_info = await contract[function_name](...function_params, { value: ethers.utils.parseUnits(total_mint_price.toString(), "ether") });
       user_minted_NFT = true;
     } else {
       transaction_info = await contract[function_name](...function_params);  

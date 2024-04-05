@@ -23,7 +23,7 @@ const Background = () => {
   });
   return (
     <div className='background'>
-      <div className='background1Container' >
+      <div className='background1Container' style={{display: 'none'}}>
         <img src={background2} alt='' className='background1' />
       </div>
       <div className='background2Container' style={{display: 'none'}}>

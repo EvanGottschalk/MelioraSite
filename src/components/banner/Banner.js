@@ -1,6 +1,7 @@
 import React from 'react'; 
 
-import home_banner from '../../image/banner-home.png'
+import banner_image from '../../image/meliora-comic-banner-1.png';
+import collect_forever_onchain_image from '../../image/collect-forever-onchain.png';
 
 import './banner.css'
 
@@ -8,9 +9,12 @@ const Banner = () => {
   
 
   return (
-    <div className='bannerContainer'>
-      <div className='banner'>
-        <img data-aos="fade-left" src={home_banner} alt='' className='banner' />
+    <div className='banner'>
+      <div className='bannerContainer'>
+        <img data-aos="fade-left" src={banner_image} alt='' className='bannerImage' />
+      </div>
+      <div className='bannerContainer collectForeverBannerContainer'>
+        <img data-aos="fade-left" src={collect_forever_onchain_image} alt='' id='collectForeverBanner' className='mintguiBannerImage'  />
       </div>
     </div>
   )
