@@ -15,6 +15,7 @@ import meliora_comic_description_image from '../../image/meliora_comic_descripti
 // import sign_up_image from '../../image/sign_up_button.png'
 // import blank_button_image from '../../image/blank_button.png'
 import collect_forever_onchain_image from '../../image/collect-forever-onchain.png';
+import base_logo_image from '../../image/base-logo.png';
 
 import './mintgui.css'
 
@@ -51,8 +52,9 @@ const MintGUI = () => {
 
   function handleFieldChange(event) {
     const current_amount_entry = event.target.value;
+    const current_total_price = parseFloat(current_amount_entry) * 0.01;
     if (current_amount_entry > 0) {
-      document.getElementById('customAmountText').textContent = `Total Price: 0.${current_amount_entry} ETH`;
+      document.getElementById('customAmountText').textContent = `Total Price: ${current_total_price} ETH`;
     } else {
       document.getElementById('customAmountText').textContent = `Total Price: 0.0 ETH`;
     }
@@ -101,6 +103,8 @@ const MintGUI = () => {
     await updateTotalMinted();
     document.getElementById('connectContainer').style.display = 'none';
     document.getElementById('infoContainer').style.display = 'inline-block';
+    document.getElementById('mintWithBaseContainer').style.borderRadius = '0px 0px 0px 0px';
+    document.getElementById('mintWithBaseContainer').style.paddingBottom = '1.5%';
     document.getElementById('mintContainer1').style.display = 'inline-block';
     document.getElementById('mintContainer2').style.display = 'inline-block';
     document.getElementById('mintguiRightContainer').style.width = '45%';
@@ -153,6 +157,12 @@ const MintGUI = () => {
           <a href={window.location.href + 'mintgui/meliora/volume1/play'}>
             <img data-aos="fade-left" src={play_read_button_image} alt='' onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} id='mintguiDescriptionButton' className='mintguiButton comicDescriptionButton' />
           </a> */}
+        </div>
+        <div id='mintWithBaseContainer' className='mintguiRightInnerContainer mintWithBaseContainer'>
+          <span data-aos="fade-left" id='mintOnBaseText' className='mintOnBaseText customAmountText'>
+            Mint with
+          </span>
+          <img data-aos="fade-left" src={base_logo_image} alt='' id='baseLogoImage' className='mintguiImage baseLogoImage' />
         </div>
         <div id='mintContainer1' className='mintguiButtonsContainer1 buttonGroupContainer' style={(user_address) ? {display: "inline-block"} : {display: "none"}}>
           <div className='mintButtonContainer buttonContainer'>

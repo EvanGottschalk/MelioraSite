@@ -32,7 +32,7 @@ const App = () => {
                <Navbar />
                <Banner />
                <ComicMint />
-               {/* <Footer /> */}
+               <Footer />
                {/* <BrowserRouter>
                     <Background />
                     <Navbar />

@@ -1,16 +1,43 @@
-import React from 'react'; 
+import React, { useEffect } from 'react';
 
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 import './footer.css'
 
+import nofun_logo_title_image from '../../image/nofun-logo-title.png';
+import powered_by_image from '../../image/powered-by.PNG';
+
 const Footer = () => {
   
+  
+  useEffect(() => {
+    Aos.init({ duration: 1500 });
+  }, []);
+
+
+  function onMouseOver(event) {
+    let element = document.getElementById(event.target.id);
+    element.style.transform = 'scale(1.05)';
+  };
+  
+  function onMouseLeave(event) {
+    let element = document.getElementById(event.target.id);
+    element.style.transform = 'scale(1.0)';
+  };
+
 
   return (
     <div className='footer'>
       <div className='footerContainer'>
+        <div className='poweredByContainer' id='poweredByContainer'>
+          <img src={powered_by_image} alt="Powered by NoFun Labs" className='poweredByImage' id='poweredByTextImage'/>
+          <a href='https://nofunlabs.xyz' target='_blank'>
+            <img onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} src={nofun_logo_title_image} alt="Powered by NoFun Labs" className='poweredByImage footerButton' id='poweredByImage'/>
+          </a>
+        </div>
         <div className='footerTextContainer'>
-          <marquee>Pop quiz, hot shot! What's the first blockchain ever created? (hint: it's not bitcoin) . . . . . . . . . . . . . . . . . . . . Did you know? Over 99% of NFT data is not stored on a blockchain! . . . . . . . . . . . . . . . . . . . .  Pop quiz, hot shot! What's the first country to recognize $BTC as a national currency? (hint: it's not El Salvador) . . . . . . . . . . . . . . . . . . . . Did you know? Ordinals allow for the Bitcoin blockchain to run ANY code, including AI models like ChatGPT, OS's like Windows 11, iOS, PS5 and beyond . . . . . . . . . . . . . . . . . . . . Pop quiz, hot shot! What's the first blockchain ever created? (hint: it's not bitcoin) . . . . . . . . . . . . . . . . . . . . Did you know? Over 99% of NFT data is not stored on a blockchain! . . . . . . . . . . . . . . . . . . . .  Pop quiz, hot shot! What's the first country to recognize $BTC as a national currency? (hint: it's not El Salvador) . . . . . . . . . . . . . . . . . . . . Did you know? Ordinals allow for the Bitcoin blockchain to run ANY code, including AI models like ChatGPT, OS's like Windows 11, iOS, PS5 and beyond . . . . . . . . . . . . . . . . . . . .</marquee>
+          <marquee>Contract Address: "". . . . . . . . . . . . . . . . . . . . Contract Name: "MelioraComicV1". . . . . . . . . . . . . . . . . . . . Contract Symbol: MELIORA1 . . . . . . . . . . . . . . . . . . . .  Contract URI:  . . . . . . . . . . . . . . . . . . . . Collection Name: "The Genesis of Meliora" . . . . . . . . . . . . . . . . . . . . </marquee>
         </div>
       </div>
       <div className='creatorAttributionContainer'>
