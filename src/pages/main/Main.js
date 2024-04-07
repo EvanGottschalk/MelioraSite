@@ -7,7 +7,7 @@ import React from 'react'
 
 // import Background from '../../components/background/Background';
 import Banner from '../../components/banner/Banner';
-import Comics from '../../components/comics/Comics';
+import MintGUI from '../../components/mintgui/MintGUI';
 import Universe from '../../components/universe/Universe';
 import Guardians from '../../components/guardians/Guardians';
 import Partners from '../../components/partners/Partners';
@@ -23,7 +23,7 @@ const Main = () => {
     <div className='main'>
       {/* <Background /> */}
       <Banner />
-      <Comics />
+      <MintGUI />
       <Universe />
       <Guardians />
       <Partners />

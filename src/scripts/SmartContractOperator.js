@@ -1277,7 +1277,7 @@ let contract_dict = {'default': {},
                                                  'setApprovalForAll': {'number_of_inputs': 2}}},
                      'MelioraComicV1': {'Address': {'mainnet': '',
                                                     'goerli': '',
-                                                    'sepolia': '0x5903192c2ecB01B25ff67de229e511689341ecC4', 
+                                                    'sepolia': '0xb07d394Da15C4cCE03dCEb6674166f33Cf3e28A2', 
                                                     'optimism': '',
                                                     'optimism_sepolia': '0xDd87063B0fb8F7b13AFA7886F51106013004744f'},
                                         'ABI_location': '../../../artifacts/contracts/MelioraComicV1.sol',
@@ -2600,21 +2600,77 @@ const IPFS_prefixes = {
 };
 
 const network_dict = {'default': {},
+                      'ethereum': {'name': 'ethereum',
+                                   'chainId': 1,
+                                   'url': 'https://mainnet.infura.io/v3/',
+                                   'add_network': {chainId: '0x1', // Chain ID of the network
+                                                   chainName: 'Ethereum Mainnet', // Name of the network
+                                                   rpcUrls: ['https://mainnet.infura.io/v3/'], // RPC URL
+                                                   nativeCurrency: {
+                                                        name: 'ETH',
+                                                        symbol: 'ETH',
+                                                        decimals: 18},
+                                                   blockExplorerUrls: ['https://etherscan.io/']}},
                       'goerli': {'name': 'goerli',
                                  'chainId': 5,
                                  'url': ''},
                       'polygon': {'name': 'polygon',
                                   'chainId': 137,
-                                  'url': ''},
+                                  'url': '', 
+                                  'add_network': {chainId: "0x89",
+                                                  rpcUrls: ["https://rpc-mainnet.matic.network/"],
+                                                  chainName: "Matic Mainnet",
+                                                  nativeCurrency: {
+                                                      name: "MATIC",
+                                                      symbol: "MATIC",
+                                                      decimals: 18
+                                                  },
+                                                  blockExplorerUrls: ["https://polygonscan.com/"]}},
                       'sepolia': {'name': 'sepolia',
                                   'chainId': 11155111,
-                                  'url': ''},
+                                  'url': 'https://sepolia.infura.io/v3/',
+                                  'add_network': {chainId: "0x2105",
+                                                  rpcUrls: ["https://sepolia.infura.io/v3/"],
+                                                  chainName: "Base",
+                                                  nativeCurrency: {
+                                                      name: "ETH",
+                                                      symbol: "ETH",
+                                                      decimals: 18
+                                                  },
+                                                  blockExplorerUrls: ["https://sepolia.etherscan.io/"]}},
                       'optimism': {'name': 'optimism',
                                    'chainId': 10,
                                    'url': ''},
                       'optimism_sepolia': {'name': 'optimism_sepolia',
                                            'chainId': 11155420,
                                            'url': ''},
+                      'base': {'name': 'base',
+                                           'chainId': 8453,
+                                           'url': 'https://mainnet.base.org',
+                                           'add_network': {chainId: "0x2105",
+                                                           rpcUrls: ["https://mainnet.base.org", "https://base.llamarpc.com"],
+                                                           chainName: "Base",
+                                                           nativeCurrency: {
+                                                               name: "ETH",
+                                                               symbol: "ETH",
+                                                               decimals: 18
+                                                           },
+                                                           blockExplorerUrls: ["https://basescan.org/"]}},
+                      'base_sepolia': {'name': 'base_sepolia',
+                                           'chainId': 84532,
+                                           'url': 'https://base-sepolia-rpc.publicnode.com',
+                                           'add_network': {chainId: "0x14a34",
+                                                           rpcUrls: ["https://base-sepolia-rpc.publicnode.com"],
+                                                           chainName: "Base Sepolia",
+                                                           nativeCurrency: {
+                                                               name: "ETH",
+                                                               symbol: "ETH",
+                                                               decimals: 18
+                                                           },
+                                                           blockExplorerUrls: ["https://sepolia.basescan.org/"]}},
+                      1: {'name': 'ethereum',
+                                  'chainId': 1,
+                                  'url': 'https://mainnet.infura.io/v3/'},
                       5: {'name': 'goerli',
                                  'chainId': 5,
                                  'url': ''},
@@ -2623,13 +2679,20 @@ const network_dict = {'default': {},
                                   'url': ''},
                       11155111: {'name': 'sepolia',
                                   'chainId': 11155111,
-                                  'url': ''},
+                                  'url': 'https://sepolia.infura.io/v3/'},
                       10: {'name': 'optimism',
                                    'chainId': 10,
                                    'url': ''},
                       11155420: {'name': 'optimism_sepolia',
                                            'chainId': 11155420,
-                                           'url': ''}};
+                                           'url': ''},
+                      8453: {'name': 'base',
+                                           'chainId': 8453,
+                                           'url': 'https://base.llamarpc.com'},
+                                           
+                      84532: {'name': 'base_sepolia',
+                                           'chainId': 84532,
+                                           'url': 'https://base-sepolia-rpc.publicnode.com'}};
 
 const default_network = 'sepolia';
 var network_name = default_network;
@@ -2846,6 +2909,7 @@ export async function getMetadataURI(metadata_info) {
   return metadata_URI;
 };
 
+
 export async function getOpenSeaLink(contract_name_input, token_ID_input) {
   if (!token_ID_input) {
     token_ID_input = user_token_ID;
@@ -2904,6 +2968,18 @@ async function getContractInfo(contract_name_input) {
 }
 
 
+// Function to check if the network is already added to the wallet
+async function checkNetworkAdded(network_name_input) {
+  try {
+      const networks = await window.ethereum.request({ method: 'wallet_getEthereumChain' });
+      return networks.find(net => net.chainId === network_name_input.chainId);
+  } catch (error) {
+      console.error('Error:', error);
+      return false;
+  }
+}
+
+
 async function promptNetworkSwitch (network_name_input) {
   console.log('\nSmartContractOperator >>> RUNNING promptNetworkSwitch()');
   console.log('network_name_input:', network_name_input);
@@ -2934,25 +3010,31 @@ export async function promptAddNetwork(network_name_input) {
   //if (!network_name_input || !network_dict.includes(network_name_input)) {
   //  network_name_input = default_network;
   //};
-  if (network_name_input === 'polygon' || network_name_input === 'matic') {
-    window.ethereum.request({
-      method: "wallet_addEthereumChain",
-      params: [{
-          chainId: "0x89",
-          rpcUrls: ["https://rpc-mainnet.matic.network/"],
-          chainName: "Matic Mainnet",
-          nativeCurrency: {
-              name: "MATIC",
-              symbol: "MATIC",
-              decimals: 18
-          },
-          blockExplorerUrls: ["https://polygonscan.com/"]
-      }]
-    });
-  };
+  const network_params = network_dict[network_name_input]['add_network'];
+  // if (network_name_input === 'polygon' || network_name_input === 'matic') {
+  window.ethereum.request({
+    method: "wallet_addEthereumChain",
+    params: [network_params]
+  });
+  // };
   network_name = network_name_input;
   return network_name;
 };
+
+
+export async function addNetwork(network_name_input) {
+  console.log('\nSmartContractOperator >>> RUNNING addNetwork()');
+  console.log("network_name_input:", network_name_input);
+  const network_added = await checkNetworkAdded(network_name_input);
+  if (!network_added) {
+    await promptAddNetwork(network_name_input);
+  };
+  if (network_name !== network_name_input) {
+    await promptNetworkSwitch(network_name_input);
+  };
+  console.log('Network switched to', network_name);
+};
+
 
 // changed from "export default" to just "export" because SmartContractOperator fails to export the function with "default" present
 export async function connectWallet(network_name_input) {
@@ -2966,6 +3048,7 @@ export async function connectWallet(network_name_input) {
   if ('_network' in provider) {
     network_name = provider['_network']['name'];
     network_ID = provider['_network']['chainId'];
+    console.log('Network Name & Chain ID:', network_name, network_ID);
     if (!network_dict[network_name]) {
       network_name = network_dict[network_ID]['name'];
     };
@@ -2973,7 +3056,7 @@ export async function connectWallet(network_name_input) {
   };
   if (network_name_input && (network_name !== network_name_input)) {
     console.log('PROMPTED Network Switch to: ', network_name_input);
-    promptNetworkSwitch(network_name_input);
+    await addNetwork(network_name_input);
   };
   //const contract = new ethers.Contract(contract_address_dict[network_name], json_ABI_list[network_name], provider);
   //user_token_ID = await setUserTokenID(contract_name, user_address);

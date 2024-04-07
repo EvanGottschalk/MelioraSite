@@ -58,21 +58,6 @@ body {
   background-color: red;
 }
 
-.componentFirst {
-  display: flex;
-  justify-content: center;
-  margin-top: 100px;
-  position: relative;
-  overflow: hidden;
-}
-
-.componentSecond {
-  width: 100%;
-  max-width: 1315px;
-  display: flex;
-  margin: 0 50px;
-  flex-direction: column;
-}
 
 .textHighlight {
   color: var(--color-main);
