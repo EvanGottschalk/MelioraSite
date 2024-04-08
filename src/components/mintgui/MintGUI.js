@@ -141,7 +141,7 @@ const MintGUI = () => {
           </div>
           <div id='connectButtonContainer' className='connectButtonContainer mintguiContentContainer_Right mintguiContentContainer contentContainer'>
             <div id='mintguiButtonContainer_Connect' className='mintguiButtonContainer_Connect mintguiButtonContainer buttonContainer'>
-              <span data-aos="fade-left" onClick={onMouseClick} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} alt='Connect Wallet' id='connectButtonText' className='connectButtonText mintguiButtonText mintguiText buttonText'>
+              <span data-aos="fade-left" onClick={onMouseClick} onTouchStart={onMouseClick} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} alt='Connect Wallet' id='connectButtonText' className='connectButtonText mintguiButtonText mintguiText buttonText'>
                 Connect Wallet
               </span>
             </div>
