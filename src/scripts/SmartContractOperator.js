@@ -1276,15 +1276,211 @@ let contract_dict = {'default': {},
                                                  'completeTaskBatch': {'number_of_inputs': 2},
                                                  'setApprovalForAll': {'number_of_inputs': 2}}},
                      'MelioraComicV1': {'Address': {'mainnet': '',
+                                                    'mumbai': '0xAab118857F936E614Bba65233779e5e8B1aB8a9a',
                                                     'goerli': '',
-                                                    'sepolia': '0xb07d394Da15C4cCE03dCEb6674166f33Cf3e28A2', 
+                                                    'sepolia': '0x1a9F41Ba1b44083203385f9170909B5AFb9d5de6', 
                                                     'optimism': '',
                                                     'optimism_sepolia': '0xDd87063B0fb8F7b13AFA7886F51106013004744f'},
                                         'ABI_location': '../../../artifacts/contracts/MelioraComicV1.sol',
                                           'ABI': `[{
-                                            "inputs": [],
+                                            "inputs": [
+                                              {
+                                                "internalType": "address",
+                                                "name": "initialOwner",
+                                                "type": "address"
+                                              }
+                                            ],
                                             "stateMutability": "nonpayable",
                                             "type": "constructor"
+                                          },
+                                          {
+                                            "inputs": [
+                                              {
+                                                "internalType": "uint256",
+                                                "name": "numerator",
+                                                "type": "uint256"
+                                              },
+                                              {
+                                                "internalType": "uint256",
+                                                "name": "denominator",
+                                                "type": "uint256"
+                                              }
+                                            ],
+                                            "name": "ERC2981InvalidDefaultRoyalty",
+                                            "type": "error"
+                                          },
+                                          {
+                                            "inputs": [
+                                              {
+                                                "internalType": "address",
+                                                "name": "receiver",
+                                                "type": "address"
+                                              }
+                                            ],
+                                            "name": "ERC2981InvalidDefaultRoyaltyReceiver",
+                                            "type": "error"
+                                          },
+                                          {
+                                            "inputs": [
+                                              {
+                                                "internalType": "uint256",
+                                                "name": "tokenId",
+                                                "type": "uint256"
+                                              },
+                                              {
+                                                "internalType": "uint256",
+                                                "name": "numerator",
+                                                "type": "uint256"
+                                              },
+                                              {
+                                                "internalType": "uint256",
+                                                "name": "denominator",
+                                                "type": "uint256"
+                                              }
+                                            ],
+                                            "name": "ERC2981InvalidTokenRoyalty",
+                                            "type": "error"
+                                          },
+                                          {
+                                            "inputs": [
+                                              {
+                                                "internalType": "uint256",
+                                                "name": "tokenId",
+                                                "type": "uint256"
+                                              },
+                                              {
+                                                "internalType": "address",
+                                                "name": "receiver",
+                                                "type": "address"
+                                              }
+                                            ],
+                                            "name": "ERC2981InvalidTokenRoyaltyReceiver",
+                                            "type": "error"
+                                          },
+                                          {
+                                            "inputs": [
+                                              {
+                                                "internalType": "address",
+                                                "name": "sender",
+                                                "type": "address"
+                                              },
+                                              {
+                                                "internalType": "uint256",
+                                                "name": "tokenId",
+                                                "type": "uint256"
+                                              },
+                                              {
+                                                "internalType": "address",
+                                                "name": "owner",
+                                                "type": "address"
+                                              }
+                                            ],
+                                            "name": "ERC721IncorrectOwner",
+                                            "type": "error"
+                                          },
+                                          {
+                                            "inputs": [
+                                              {
+                                                "internalType": "address",
+                                                "name": "operator",
+                                                "type": "address"
+                                              },
+                                              {
+                                                "internalType": "uint256",
+                                                "name": "tokenId",
+                                                "type": "uint256"
+                                              }
+                                            ],
+                                            "name": "ERC721InsufficientApproval",
+                                            "type": "error"
+                                          },
+                                          {
+                                            "inputs": [
+                                              {
+                                                "internalType": "address",
+                                                "name": "approver",
+                                                "type": "address"
+                                              }
+                                            ],
+                                            "name": "ERC721InvalidApprover",
+                                            "type": "error"
+                                          },
+                                          {
+                                            "inputs": [
+                                              {
+                                                "internalType": "address",
+                                                "name": "operator",
+                                                "type": "address"
+                                              }
+                                            ],
+                                            "name": "ERC721InvalidOperator",
+                                            "type": "error"
+                                          },
+                                          {
+                                            "inputs": [
+                                              {
+                                                "internalType": "address",
+                                                "name": "owner",
+                                                "type": "address"
+                                              }
+                                            ],
+                                            "name": "ERC721InvalidOwner",
+                                            "type": "error"
+                                          },
+                                          {
+                                            "inputs": [
+                                              {
+                                                "internalType": "address",
+                                                "name": "receiver",
+                                                "type": "address"
+                                              }
+                                            ],
+                                            "name": "ERC721InvalidReceiver",
+                                            "type": "error"
+                                          },
+                                          {
+                                            "inputs": [
+                                              {
+                                                "internalType": "address",
+                                                "name": "sender",
+                                                "type": "address"
+                                              }
+                                            ],
+                                            "name": "ERC721InvalidSender",
+                                            "type": "error"
+                                          },
+                                          {
+                                            "inputs": [
+                                              {
+                                                "internalType": "uint256",
+                                                "name": "tokenId",
+                                                "type": "uint256"
+                                              }
+                                            ],
+                                            "name": "ERC721NonexistentToken",
+                                            "type": "error"
+                                          },
+                                          {
+                                            "inputs": [
+                                              {
+                                                "internalType": "address",
+                                                "name": "owner",
+                                                "type": "address"
+                                              }
+                                            ],
+                                            "name": "OwnableInvalidOwner",
+                                            "type": "error"
+                                          },
+                                          {
+                                            "inputs": [
+                                              {
+                                                "internalType": "address",
+                                                "name": "account",
+                                                "type": "address"
+                                              }
+                                            ],
+                                            "name": "OwnableUnauthorizedAccount",
+                                            "type": "error"
                                           },
                                           {
                                             "anonymous": false,
@@ -1466,6 +1662,24 @@ let contract_dict = {'default': {},
                                                 "type": "string"
                                               }
                                             ],
+                                            "stateMutability": "nonpayable",
+                                            "type": "function"
+                                          },
+                                          {
+                                            "inputs": [
+                                              {
+                                                "internalType": "address",
+                                                "name": "receiver_address",
+                                                "type": "address"
+                                              },
+                                              {
+                                                "internalType": "uint96",
+                                                "name": "fee_numerator",
+                                                "type": "uint96"
+                                              }
+                                            ],
+                                            "name": "__setDefaultRoyalty",
+                                            "outputs": [],
                                             "stateMutability": "nonpayable",
                                             "type": "function"
                                           },
@@ -1686,6 +1900,19 @@ let contract_dict = {'default': {},
                                           },
                                           {
                                             "inputs": [],
+                                            "name": "__toggleMintLocked",
+                                            "outputs": [
+                                              {
+                                                "internalType": "bool",
+                                                "name": "_mintLocked",
+                                                "type": "bool"
+                                              }
+                                            ],
+                                            "stateMutability": "nonpayable",
+                                            "type": "function"
+                                          },
+                                          {
+                                            "inputs": [],
                                             "name": "__updateAllDefaultTokenURIs",
                                             "outputs": [
                                               {
@@ -1712,12 +1939,38 @@ let contract_dict = {'default': {},
                                           },
                                           {
                                             "inputs": [],
+                                            "name": "_currentTokenID",
+                                            "outputs": [
+                                              {
+                                                "internalType": "uint256",
+                                                "name": "",
+                                                "type": "uint256"
+                                              }
+                                            ],
+                                            "stateMutability": "view",
+                                            "type": "function"
+                                          },
+                                          {
+                                            "inputs": [],
                                             "name": "_maxSupply",
                                             "outputs": [
                                               {
                                                 "internalType": "uint256",
                                                 "name": "",
                                                 "type": "uint256"
+                                              }
+                                            ],
+                                            "stateMutability": "view",
+                                            "type": "function"
+                                          },
+                                          {
+                                            "inputs": [],
+                                            "name": "_mintLocked",
+                                            "outputs": [
+                                              {
+                                                "internalType": "bool",
+                                                "name": "",
+                                                "type": "bool"
                                               }
                                             ],
                                             "stateMutability": "view",
@@ -1794,6 +2047,19 @@ let contract_dict = {'default': {},
                                                 "internalType": "string",
                                                 "name": "",
                                                 "type": "string"
+                                              }
+                                            ],
+                                            "stateMutability": "view",
+                                            "type": "function"
+                                          },
+                                          {
+                                            "inputs": [],
+                                            "name": "fundRecipientCount",
+                                            "outputs": [
+                                              {
+                                                "internalType": "uint16",
+                                                "name": "",
+                                                "type": "uint16"
                                               }
                                             ],
                                             "stateMutability": "view",
@@ -1993,6 +2259,19 @@ let contract_dict = {'default': {},
                                           },
                                           {
                                             "inputs": [],
+                                            "name": "getMyWhitelistTier",
+                                            "outputs": [
+                                              {
+                                                "internalType": "uint16",
+                                                "name": "",
+                                                "type": "uint16"
+                                              }
+                                            ],
+                                            "stateMutability": "view",
+                                            "type": "function"
+                                          },
+                                          {
+                                            "inputs": [],
                                             "name": "getTotalFundWeight",
                                             "outputs": [
                                               {
@@ -2127,6 +2406,25 @@ let contract_dict = {'default': {},
                                               }
                                             ],
                                             "name": "isApprovedForAll",
+                                            "outputs": [
+                                              {
+                                                "internalType": "bool",
+                                                "name": "",
+                                                "type": "bool"
+                                              }
+                                            ],
+                                            "stateMutability": "view",
+                                            "type": "function"
+                                          },
+                                          {
+                                            "inputs": [
+                                              {
+                                                "internalType": "address",
+                                                "name": "recipient_address",
+                                                "type": "address"
+                                              }
+                                            ],
+                                            "name": "isHuman",
                                             "outputs": [
                                               {
                                                 "internalType": "bool",
@@ -2276,6 +2574,35 @@ let contract_dict = {'default': {},
                                             "name": "renounceOwnership",
                                             "outputs": [],
                                             "stateMutability": "nonpayable",
+                                            "type": "function"
+                                          },
+                                          {
+                                            "inputs": [
+                                              {
+                                                "internalType": "uint256",
+                                                "name": "tokenId",
+                                                "type": "uint256"
+                                              },
+                                              {
+                                                "internalType": "uint256",
+                                                "name": "salePrice",
+                                                "type": "uint256"
+                                              }
+                                            ],
+                                            "name": "royaltyInfo",
+                                            "outputs": [
+                                              {
+                                                "internalType": "address",
+                                                "name": "",
+                                                "type": "address"
+                                              },
+                                              {
+                                                "internalType": "uint256",
+                                                "name": "",
+                                                "type": "uint256"
+                                              }
+                                            ],
+                                            "stateMutability": "view",
                                             "type": "function"
                                           },
                                           {
@@ -2508,6 +2835,7 @@ let contract_dict = {'default': {},
                                           'Functions': {'mint': [],
                                                         'mintBatch': ['amount'],
                                                         '__mintFree': ['token_URI'],
+                                                        '__toggleMintLocked': [],
                                                         'contractURI': [],
                                                         '__setContractURI': ['new_contract_URI'],
                                                         'getCurrentSupply': [],
@@ -2540,12 +2868,226 @@ let contract_dict = {'default': {},
                                                         'getFundRecipientWeight': ['recipient_address'],
                                                         'getFundRecipientCount': [],
                                                         'getTotalFundWeight': [],
+                                                        'royaltyInfo': ['tokenId', 'salePrice'],
+                                                        '__setDefaultRoyalty': ['receiver_address', 'fee_percent'],
+                                                        'setRoyaltyRecipient': ['receiver_address'],
+                                                        'setRoyaltyFee': ['int_over_10000'],
                                                         'setApprovalForAll': ['thing_1', 'thing_2']}},
                      'LMNTL': {'Address': {'mainnet': '',
                                            'goerli': '0xA70CB9f3768D9AEdF7390Fed92770dCDdE1D0C1D',
                                            'hyperspace': '0xB4fECac2F5BdEc2eD15547cF857464c8691b9849'},
                                'ABI': `[]`,
-                               'Functions': {'mint': {'number_of_inputs': 1}}}};
+                               'Functions': {'mint': {'number_of_inputs': 1}}},
+                     'FundSplitter': {'Address': {'mainnet': '',
+                                                    'mumbai': '0x431b6440150Bb24908EE363753026d76ecd613B9',
+                                                    'goerli': '',
+                                                    'sepolia': '', 
+                                                    'optimism': '',
+                                                    'optimism_sepolia': ''},
+                                      'ABI_location': '../../../artifacts/contracts/FundSplitter.sol',
+                                      'ABI': `[{
+                                        "inputs": [
+                                          {
+                                            "internalType": "address",
+                                            "name": "initialOwner",
+                                            "type": "address"
+                                          }
+                                        ],
+                                        "stateMutability": "nonpayable",
+                                        "type": "constructor"
+                                      },
+                                      {
+                                        "inputs": [
+                                          {
+                                            "internalType": "address",
+                                            "name": "owner",
+                                            "type": "address"
+                                          }
+                                        ],
+                                        "name": "OwnableInvalidOwner",
+                                        "type": "error"
+                                      },
+                                      {
+                                        "inputs": [
+                                          {
+                                            "internalType": "address",
+                                            "name": "account",
+                                            "type": "address"
+                                          }
+                                        ],
+                                        "name": "OwnableUnauthorizedAccount",
+                                        "type": "error"
+                                      },
+                                      {
+                                        "anonymous": false,
+                                        "inputs": [
+                                          {
+                                            "indexed": true,
+                                            "internalType": "address",
+                                            "name": "previousOwner",
+                                            "type": "address"
+                                          },
+                                          {
+                                            "indexed": true,
+                                            "internalType": "address",
+                                            "name": "newOwner",
+                                            "type": "address"
+                                          }
+                                        ],
+                                        "name": "OwnershipTransferred",
+                                        "type": "event"
+                                      },
+                                      {
+                                        "stateMutability": "payable",
+                                        "type": "fallback"
+                                      },
+                                      {
+                                        "inputs": [
+                                          {
+                                            "internalType": "address payable",
+                                            "name": "recipient_address",
+                                            "type": "address"
+                                          },
+                                          {
+                                            "internalType": "uint16",
+                                            "name": "fund_weight",
+                                            "type": "uint16"
+                                          }
+                                        ],
+                                        "name": "__setFundRecipientWeight",
+                                        "outputs": [
+                                          {
+                                            "internalType": "uint16",
+                                            "name": "old_fund_weight",
+                                            "type": "uint16"
+                                          }
+                                        ],
+                                        "stateMutability": "nonpayable",
+                                        "type": "function"
+                                      },
+                                      {
+                                        "inputs": [],
+                                        "name": "getFundRecipientCount",
+                                        "outputs": [
+                                          {
+                                            "internalType": "uint256",
+                                            "name": "",
+                                            "type": "uint256"
+                                          }
+                                        ],
+                                        "stateMutability": "view",
+                                        "type": "function"
+                                      },
+                                      {
+                                        "inputs": [
+                                          {
+                                            "internalType": "address",
+                                            "name": "recipient_address",
+                                            "type": "address"
+                                          }
+                                        ],
+                                        "name": "getFundRecipientWeight",
+                                        "outputs": [
+                                          {
+                                            "internalType": "uint16",
+                                            "name": "",
+                                            "type": "uint16"
+                                          }
+                                        ],
+                                        "stateMutability": "view",
+                                        "type": "function"
+                                      },
+                                      {
+                                        "inputs": [],
+                                        "name": "getTotalFundWeight",
+                                        "outputs": [
+                                          {
+                                            "internalType": "uint16",
+                                            "name": "",
+                                            "type": "uint16"
+                                          }
+                                        ],
+                                        "stateMutability": "view",
+                                        "type": "function"
+                                      },
+                                      {
+                                        "inputs": [],
+                                        "name": "owner",
+                                        "outputs": [
+                                          {
+                                            "internalType": "address",
+                                            "name": "",
+                                            "type": "address"
+                                          }
+                                        ],
+                                        "stateMutability": "view",
+                                        "type": "function"
+                                      },
+                                      {
+                                        "inputs": [],
+                                        "name": "renounceOwnership",
+                                        "outputs": [],
+                                        "stateMutability": "nonpayable",
+                                        "type": "function"
+                                      },
+                                      {
+                                        "inputs": [
+                                          {
+                                            "internalType": "address",
+                                            "name": "newOwner",
+                                            "type": "address"
+                                          }
+                                        ],
+                                        "name": "transferOwnership",
+                                        "outputs": [],
+                                        "stateMutability": "nonpayable",
+                                        "type": "function"
+                                      },
+                                      {
+                                        "stateMutability": "payable",
+                                        "type": "receive"
+                                      }]`,
+                                      'Functions': {'mint': [],
+                                                        'mintBatch': ['amount'],
+                                                        '__mintFree': ['token_URI'],
+                                                        'contractURI': [],
+                                                        '__setContractURI': ['new_contract_URI'],
+                                                        'getCurrentSupply': [],
+                                                        'getMaxSupply': [],
+                                                        '__setMaxSupply': ['new_max_supply'],
+                                                        'getUniqueTokenSupply': [],
+                                                        'getUniqueTokenMaxSupply': [],
+                                                        '__setUniqueTokenMaxSupply': ['new_unique_token_maxSupply'],
+                                                        'getWhitelistTier': ['user_address'],
+                                                        '__setWhitelistTier': ['whitelist_tier', 'user_address'],
+                                                        'getWhitelistMinimumRequirement': [],
+                                                        '__setWhitelistMinimumRequirement': ['new_whitelist_minimum_requirement'],
+                                                        'getMintPrice': ['whitelist_tier'],
+                                                        'getUserMintPrice': ['user_address'],
+                                                        'getMyMintPrice': [],
+                                                        '__setMintPrice': ['whitelist_tier', 'new_mint_price'],
+                                                        'getMintLimit': ['whitelist_tier'],
+                                                        'getUserMintLimit': ['user_address'],
+                                                        'getMyMintLimit': [],
+                                                        '__setMintLimit': ['whitelist_tier', 'mint_limit'],
+                                                        'tokenURI': ['token_ID'],
+                                                        '__setTokenURI': ['token_ID', 'new_token_URI'],
+                                                        'getDefaultTokenURI': [],
+                                                        '__setDefaultTokenURI': ['defaultTokenURI'],
+                                                        'getUniqueTokenBaseURI': [],
+                                                        '__setUniqueTokenBaseURI': ['uniqueTokenBaseURI'],
+                                                        '__updateAllDefaultTokenURIs': [],
+                                                        '__updateAllUniqueTokenURIs': [],
+                                                        '__setFundRecipientWeight' : ['recipient_address', 'fund_weight'],
+                                                        'getFundRecipientWeight': ['recipient_address'],
+                                                        'getFundRecipientCount': [],
+                                                        'getTotalFundWeight': [],
+                                                        'royaltyInfo': ['tokenId', 'salePrice'],
+                                                        '__setDefaultRoyalty': ['receiver_address', 'fee_percent'],
+                                                        'setRoyaltyRecipient': ['receiver_address'],
+                                                        'setRoyaltyFee': ['int_over_10000'],
+                                                        '__setRoyaltyReceiver': ['receiver_address'],
+                                                        'setApprovalForAll': ['thing_1', 'thing_2']}}};
 
 var contract_name = default_contract_name;
 contract_dict['default'] = contract_dict[default_contract_name];
@@ -2626,6 +3168,18 @@ const network_dict = {'default': {},
                                                       decimals: 18
                                                   },
                                                   blockExplorerUrls: ["https://polygonscan.com/"]}},
+                      'mumbai': {'name': 'mumbai',
+                                  'chainId': 80001,
+                                  'url': 'https://rpc.ankr.com/polygon_mumbai', 
+                                  'add_network': {chainId: "0x13881",
+                                                  rpcUrls: ["https://rpc.ankr.com/polygon_mumbai"],
+                                                  chainName: "Mumbai Testnet",
+                                                  nativeCurrency: {
+                                                      name: "MATIC",
+                                                      symbol: "MATIC",
+                                                      decimals: 18
+                                                  },
+                                                  blockExplorerUrls: ["https://mumbai.polygonscan.com/"]}},
                       'sepolia': {'name': 'sepolia',
                                   'chainId': 11155111,
                                   'url': 'https://sepolia.infura.io/v3/',
@@ -2676,6 +3230,9 @@ const network_dict = {'default': {},
                                  'url': ''},
                       137: {'name': 'polygon',
                                   'chainId': 137,
+                                  'url': ''},
+                      80001: {'name': 'mumbai',
+                                  'chainId': 80001,
                                   'url': ''},
                       11155111: {'name': 'sepolia',
                                   'chainId': 11155111,
@@ -3175,6 +3732,8 @@ export async function runContractFunction(contract_name_input, function_name, fu
 
   console.log('address', signer._address);
 
+  // const ABI = await getABI(contract_name_input);
+  // const iface = new Interface(ABI);
   const iface = new Interface(contract_dict[contract_name_input]['ABI']);
   iface.format(FormatTypes.full);
   const contract = new ethers.Contract(contract_address, iface, signer);

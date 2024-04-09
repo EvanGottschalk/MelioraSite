@@ -4,8 +4,8 @@ import SmartContractContext from '../../scripts/SmartContractContext';
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-import { connectWallet, runContractFunction, getFunctionParams } from '../../scripts/SmartContractOperator';
-import {mintNFT, getOpenSeaLink, getJSONfromIPFS, setUserTokenID, setUserMetadata, setUserAvatarURI} from '../../scripts/SmartContractOperator';
+import { connectWallet, runContractFunction } from '../../scripts/SmartContractOperator';
+import { getOpenSeaLink } from '../../scripts/SmartContractOperator';
 
 
 import meliora_comic_cover_image from '../../image/meliora_comic_cover.png';
@@ -14,7 +14,6 @@ import meliora_comic_description_image from '../../image/meliora_comic_descripti
 // import play_read_button_image from '../../image/play_read_button.png'
 // import sign_up_image from '../../image/sign_up_button.png'
 // import blank_button_image from '../../image/blank_button.png'
-import collect_forever_onchain_image from '../../image/collect-forever-onchain.png';
 import base_logo_image from '../../image/base-logo.png';
 
 import './mintgui.css'
@@ -35,7 +34,7 @@ const MintGUI = () => {
   let { user_avatar_URI, setAvatarURI_Context } = useContext(SmartContractContext);
   let { contract_name, setContractName_Context } = useContext(SmartContractContext);
 
-  network_name = 'sepolia';
+  network_name = 'mumbai';
   contract_name = 'MelioraComicV1';
   user_address = false;
   var total_minted = 0; //runContractFunction(contract_name, 'getTotalSupply');
@@ -141,7 +140,7 @@ const MintGUI = () => {
           </div>
           <div id='connectButtonContainer' className='connectButtonContainer mintguiContentContainer_Right mintguiContentContainer contentContainer'>
             <div id='mintguiButtonContainer_Connect' className='mintguiButtonContainer_Connect mintguiButtonContainer buttonContainer'>
-              <span data-aos="fade-left" onClick={onMouseClick} onTouchStart={onMouseClick} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} alt='Connect Wallet' id='connectButtonText' className='connectButtonText mintguiButtonText mintguiText buttonText'>
+              <span data-aos="fade-left" onClick={onMouseClick} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} alt='Connect Wallet' id='connectButtonText' className='connectButtonText mintguiButtonText mintguiText buttonText'>
                 Connect Wallet
               </span>
             </div>
