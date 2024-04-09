@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/MelioraSite/static/css/main.864821bc.chunk.css",
-    "main.js": "/MelioraSite/static/js/main.28b8abb9.chunk.js",
-    "main.js.map": "/MelioraSite/static/js/main.28b8abb9.chunk.js.map",
+    "main.js": "/MelioraSite/static/js/main.5b1fc787.chunk.js",
+    "main.js.map": "/MelioraSite/static/js/main.5b1fc787.chunk.js.map",
     "runtime-main.js": "/MelioraSite/static/js/runtime-main.6d052b13.js",
     "runtime-main.js.map": "/MelioraSite/static/js/runtime-main.6d052b13.js.map",
     "static/css/2.7fc9bc2b.chunk.css": "/MelioraSite/static/css/2.7fc9bc2b.chunk.css",
@@ -37,6 +37,6 @@
     "static/css/2.7fc9bc2b.chunk.css",
     "static/js/2.487a77d1.chunk.js",
     "static/css/main.864821bc.chunk.css",
-    "static/js/main.28b8abb9.chunk.js"
+    "static/js/main.5b1fc787.chunk.js"
   ]
 }
