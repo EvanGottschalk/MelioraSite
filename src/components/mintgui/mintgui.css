@@ -106,12 +106,12 @@
 }
 
 .mintguiMintButtonText {
-  width: 30%;
+  width: 33%;
   font-size: 20px;
 }
 
 .mintguiInputField {
-  width: 33.5%;
+  width: 36.5%;
   line-height: 27px;
   font-size: 20px;
   display: flex;
@@ -222,7 +222,7 @@
 
   .mintguiMintButtonText {
     width: 33.5vw;
-    font-size: 3vw;
+    font-size: 3.25vw;
   }
 
   .mintguiInputField {
