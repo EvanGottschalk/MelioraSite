@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.6ee5ba26.chunk.css",
-    "main.js": "/static/js/main.5b1fc787.chunk.js",
-    "main.js.map": "/static/js/main.5b1fc787.chunk.js.map",
+    "main.css": "/static/css/main.d327c52d.chunk.css",
+    "main.js": "/static/js/main.5efb4279.chunk.js",
+    "main.js.map": "/static/js/main.5efb4279.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.233da4b3.js",
     "runtime-main.js.map": "/static/js/runtime-main.233da4b3.js.map",
     "static/css/2.7fc9bc2b.chunk.css": "/static/css/2.7fc9bc2b.chunk.css",
@@ -10,7 +10,7 @@
     "static/js/2.487a77d1.chunk.js.map": "/static/js/2.487a77d1.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.7fc9bc2b.chunk.css.map": "/static/css/2.7fc9bc2b.chunk.css.map",
-    "static/css/main.6ee5ba26.chunk.css.map": "/static/css/main.6ee5ba26.chunk.css.map",
+    "static/css/main.d327c52d.chunk.css.map": "/static/css/main.d327c52d.chunk.css.map",
     "static/js/2.487a77d1.chunk.js.LICENSE.txt": "/static/js/2.487a77d1.chunk.js.LICENSE.txt",
     "static/media/EXP_plus_10.cd8d1cc1.gif": "/static/media/EXP_plus_10.cd8d1cc1.gif",
     "static/media/EXP_plus_5.7ef89b0c.gif": "/static/media/EXP_plus_5.7ef89b0c.gif",
@@ -25,7 +25,7 @@
     "static/media/logo.c7abb9cd.png": "/static/media/logo.c7abb9cd.png",
     "static/media/meliora-comic-banner-2.fe2eddf3.png": "/static/media/meliora-comic-banner-2.fe2eddf3.png",
     "static/media/meliora_comic_cover.93408526.png": "/static/media/meliora_comic_cover.93408526.png",
-    "static/media/meliora_comic_description.ea3bf384.png": "/static/media/meliora_comic_description.ea3bf384.png",
+    "static/media/meliora_comic_description.eeab11d7.png": "/static/media/meliora_comic_description.eeab11d7.png",
     "static/media/nofun-logo-title.752ac2a5.png": "/static/media/nofun-logo-title.752ac2a5.png",
     "static/media/partners-image.e21e9a12.png": "/static/media/partners-image.e21e9a12.png",
     "static/media/powered-by.0835ef33.PNG": "/static/media/powered-by.0835ef33.PNG",
@@ -36,7 +36,7 @@
     "static/js/runtime-main.233da4b3.js",
     "static/css/2.7fc9bc2b.chunk.css",
     "static/js/2.487a77d1.chunk.js",
-    "static/css/main.6ee5ba26.chunk.css",
-    "static/js/main.5b1fc787.chunk.js"
+    "static/css/main.d327c52d.chunk.css",
+    "static/js/main.5efb4279.chunk.js"
   ]
 }
