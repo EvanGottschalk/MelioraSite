@@ -1276,7 +1276,10 @@ let contract_dict = {'default': {},
                                                  'completeTaskBatch': {'number_of_inputs': 2},
                                                  'setApprovalForAll': {'number_of_inputs': 2}}},
                      'MelioraComicV1': {'Address': {'mainnet': '',
-                                                    'mumbai': '0xAab118857F936E614Bba65233779e5e8B1aB8a9a',
+                                                    'polygon': '',
+                                                    'mumbai': '0xbAE8C07F52d440573e503d4a89A056Cd1E1907e3',
+                                                    'base': '0x1Fd69E3941030940f58e537B15bea96F5e766291',
+                                                    'base_sepolia': '',
                                                     'goerli': '',
                                                     'sepolia': '0x1a9F41Ba1b44083203385f9170909B5AFb9d5de6', 
                                                     'optimism': '',
@@ -1900,19 +1903,6 @@ let contract_dict = {'default': {},
                                           },
                                           {
                                             "inputs": [],
-                                            "name": "__toggleMintLocked",
-                                            "outputs": [
-                                              {
-                                                "internalType": "bool",
-                                                "name": "_mintLocked",
-                                                "type": "bool"
-                                              }
-                                            ],
-                                            "stateMutability": "nonpayable",
-                                            "type": "function"
-                                          },
-                                          {
-                                            "inputs": [],
                                             "name": "__updateAllDefaultTokenURIs",
                                             "outputs": [
                                               {
@@ -1958,19 +1948,6 @@ let contract_dict = {'default': {},
                                                 "internalType": "uint256",
                                                 "name": "",
                                                 "type": "uint256"
-                                              }
-                                            ],
-                                            "stateMutability": "view",
-                                            "type": "function"
-                                          },
-                                          {
-                                            "inputs": [],
-                                            "name": "_mintLocked",
-                                            "outputs": [
-                                              {
-                                                "internalType": "bool",
-                                                "name": "",
-                                                "type": "bool"
                                               }
                                             ],
                                             "stateMutability": "view",
@@ -2879,7 +2856,9 @@ let contract_dict = {'default': {},
                                'ABI': `[]`,
                                'Functions': {'mint': {'number_of_inputs': 1}}},
                      'FundSplitter': {'Address': {'mainnet': '',
-                                                    'mumbai': '0x431b6440150Bb24908EE363753026d76ecd613B9',
+                                                    'mumbai': '0xE20c8268Bb7efCa16842300148553cDb7910A4A1',
+                                                    'base': '0x04ACE7444a2EB3771Cb7744e202eE173940F6122',
+                                                    'base_sepolia': '',
                                                     'goerli': '',
                                                     'sepolia': '', 
                                                     'optimism': '',
@@ -3295,6 +3274,29 @@ function capitalize(string) {
 function pause(time) {
   return new Promise(resolve => setTimeout(resolve, time));
 }
+
+
+async function getRounding(number) {
+  // Convert the number to a string
+  const number_string = number.toString();
+  console.log('number_string:', number_string);
+  // Find the position of the decimal point
+  const decimal_index = number_string.indexOf('.');
+  
+  // If there is no decimal point, return 0
+  if (decimal_index === -1) {
+      return 0;
+  }
+
+  const rounding_amount = number_string.length - decimal_index - 1;
+  
+  // Return the number of characters after the decimal point
+  return(rounding_amount);
+};
+
+
+
+
 
 
 
@@ -3750,11 +3752,14 @@ export async function runContractFunction(contract_name_input, function_name, fu
       console.log('Mint Price RAW:', mint_price_raw);
       const mint_price_fixed = mint_price_raw / 1000000000000000000;
       console.log('Mint Price FIXED:', mint_price_fixed);
+      const mint_price_rounding_amount = await getRounding(mint_price_fixed);
+      console.log('Mint Price ROUNDING AMOUNT:', mint_price_rounding_amount);
       var total_mint_price = mint_price_fixed;
       if (function_name === 'mintBatch') {
         total_mint_price = mint_price_fixed * function_params[0]; // multiply by the 'amount' input
-        console.log('TOTAL Mint Price:', total_mint_price);
       };
+      total_mint_price = total_mint_price.toFixed(mint_price_rounding_amount);
+      console.log('TOTAL Mint Price:', total_mint_price);
       transaction_info = await contract[function_name](...function_params, { value: ethers.utils.parseUnits(total_mint_price.toString(), "ether") });
       user_minted_NFT = true;
     } else {
