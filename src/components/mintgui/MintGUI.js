@@ -34,7 +34,7 @@ const MintGUI = () => {
   let { user_avatar_URI, setAvatarURI_Context } = useContext(SmartContractContext);
   let { contract_name, setContractName_Context } = useContext(SmartContractContext);
 
-  network_name = 'mumbai';
+  network_name = 'base';
   contract_name = 'MelioraComicV1';
   user_address = false;
   var total_minted = 0; //runContractFunction(contract_name, 'getTotalSupply');
